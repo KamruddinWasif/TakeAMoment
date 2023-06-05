@@ -1,21 +1,25 @@
-//
-//  ContentView.swift
-//  TakeAMoment
-//
-//  Created by Wasif Kamruddin on 6/5/23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isBreathing = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Spacer()
+            
+            if isBreathing {
+                BreathingView(isBreathing: $isBreathing)
+            } else {
+                Button(action: {
+                    isBreathing = true
+                }) {
+                    Text("Help me calm down")
+                        .font(.largeTitle)
+                }
+            }
+            
+            Spacer()
         }
-        .padding()
     }
 }
 
